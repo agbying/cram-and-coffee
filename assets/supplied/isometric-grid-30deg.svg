@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2048" height="1536" viewBox="0 0 2048 1536">
+  <title>Transparent 30-degree isometric ground grid</title>
+  <desc>Uniform diamonds, 128 pixels wide and 73.900834456 pixels high. Both ground axes are exactly 30 degrees from horizontal. No background fill.</desc>
+  <defs>
+    <pattern id="ground-grid" width="128" height="73.9008344562721" patternUnits="userSpaceOnUse">
+      <path d="M0 0 L128 73.9008344562721 M0 73.9008344562721 L128 0"
+        fill="none" stroke="#756150" stroke-width="1.75" stroke-opacity="0.72"/>
+    </pattern>
+  </defs>
+  <rect width="2048" height="1536" fill="url(#ground-grid)"/>
+</svg>

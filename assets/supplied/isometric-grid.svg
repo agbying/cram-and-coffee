@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <defs>
+    <pattern id="isometric-grid" width="128" height="74" patternUnits="userSpaceOnUse">
+      <path
+        d="M0 0 L64 37 L128 0 M0 74 L64 37 L128 74 M0 0 L64 37 L0 74 M128 0 L64 37 L128 74"
+        fill="none"
+        stroke="#725f50"
+        stroke-width="1.5"
+        stroke-opacity="0.42"
+        stroke-linejoin="round"
+      />
+    </pattern>
+  </defs>
+  <rect width="1024" height="1024" fill="url(#isometric-grid)" />
+</svg>
