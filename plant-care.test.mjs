@@ -1,0 +1,17 @@
+import vm from 'node:vm';
+import fs from 'node:fs';
+import assert from 'node:assert/strict';
+const context=vm.createContext({window:{},Date,Map,Math,Number});vm.runInContext(fs.readFileSync(new URL('./plant-care.js',import.meta.url),'utf8'),context);const care=context.window.CoffeePlant;
+const state=()=>({xp:0,settings:{daily:60},sessions:[]});
+const s=state();care.update(s,'2026-10-01');assert.equal(s.plantCare.stage,0);s.sessions.push({date:'2026-10-01',minutes:59});care.update(s,'2026-10-01');assert.equal(s.xp,0);assert.equal(s.plantCare.stage,0);
+s.sessions.push({date:'2026-10-01',minutes:1});assert.equal(care.update(s,'2026-10-01').xp,5);assert.equal(s.plantCare.stage,1);for(let i=0;i<10;i++)care.update(s,'2026-10-01');assert.equal(s.xp,5);assert.equal(s.plantCare.reward,5);
+for(const day of ['2026-10-02','2026-10-03','2026-10-04']){s.sessions.push({date:day,minutes:60});assert.equal(care.update(s,day).xp,5);}assert.equal(s.plantCare.stage,4);assert.equal(s.xp,20);
+s.sessions.push({date:'2026-10-05',minutes:120});assert.equal(care.update(s,'2026-10-05').xp,15);assert.equal(s.plantCare.stage,4);assert.equal(s.xp,35);assert.equal(care.update(s,'2026-10-05').xp,0);
+care.update(s,'2026-10-06');assert.equal(s.plantCare.stage,4);assert.equal(s.plantCare.completed,false);care.update(s,'2026-10-07');assert.equal(s.plantCare.stage,3);assert.equal(s.xp,35);
+s.sessions.push({date:'2026-10-07',minutes:60});assert.equal(care.update(s,'2026-10-07').xp,5);assert.equal(s.plantCare.stage,4);care.update(s,'2026-10-14');assert.equal(s.plantCare.stage,0);assert.equal(s.xp,40);
+const beforeRollback=JSON.stringify(s);care.update(s,'2026-10-13');assert.equal(JSON.stringify(s),beforeRollback);
+const gap=state();gap.plantCare={stage:3,lastDate:'2026-10-01',goal:60,completed:false,reward:0};gap.sessions=[{date:'2026-10-01',minutes:60},{date:'2026-10-03',minutes:60},{date:'2026-10-04',minutes:60}];const back=care.update(gap,'2026-10-05');assert.equal(back.xp,25);assert.equal(gap.plantCare.stage,4);assert.equal(gap.plantCare.completed,false);assert.equal(back.missed,1);
+const goal=state();goal.plantCare={stage:2,lastDate:'2026-10-01',goal:60,completed:false,reward:0};goal.sessions=[{date:'2026-10-01',minutes:30}];goal.settings.daily=20;care.update(goal,'2026-10-02');assert.equal(goal.plantCare.stage,1);assert.equal(goal.xp,0);goal.sessions.push({date:'2026-10-02',minutes:20});care.update(goal,'2026-10-02');assert.equal(goal.plantCare.stage,2);assert.equal(goal.xp,5);goal.settings.daily=90;care.update(goal,'2026-10-02');assert.equal(goal.plantCare.stage,2);assert.equal(goal.xp,5);
+const legacy=state();legacy.sessions=[{date:'2026-09-01',minutes:60}];care.update(legacy,'2026-10-02');assert.equal(legacy.plantCare.stage,0);assert.equal(legacy.xp,0);assert.equal(legacy.plantCare.lastDate,'2026-10-02');
+assert.equal(care.nextDay('2028-02-28'),'2028-02-29');assert.equal(care.nextDay('2028-02-29'),'2028-03-01');assert.equal(care.nextDay('2026-12-31'),'2027-01-01');assert.equal(care.nextDay('2026-11-01'),'2026-11-02');
+console.log('PASS: independent care stages, exact daily goal threshold, one reward/day, growth day 5 XP, mature follow-up 15 XP, no premature daily penalty, one regression per missed day including offline gaps, floor at soil, calendar/year/leap/DST rollover, old goal honored for yesterday, changed goal for today, migration and clock rollback.');

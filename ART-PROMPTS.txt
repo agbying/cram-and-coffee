@@ -1,0 +1,13 @@
+Built-in image generation was used for all generated artwork.
+
+PLANT
+A polished warm hand-painted anime storybook illustration of a healthy small coffee plant with glossy green leaves and a few red coffee cherries in a terracotta pot, beside an adorable cream ceramic cup with a tiny smiling face, on a honey-colored wooden cafe table. Sunlight from an arched window, soft leafy cafe background and warm golden afternoon glow. Landscape composition, close-up plant and cup, no text or UI.
+
+FURNITURE
+Transparent sprite atlas: exactly 4 columns and 3 rows of equally spaced isolated objects. Row 1: monstera plant, round wooden cafe table, brass pendant lamp, wooden armchair with sage cushion. Row 2: bookshelf with trailing plant, chalkboard with coffee cup drawing, terracotta rug, framed botanical art. Row 3: hanging ivy, sleeping calico cat on cushion, espresso counter, smiling barista. Warm hand-painted storybook style, elevated three-quarter view, no text or cell borders.
+
+ISOMETRIC ROOM
+A true orthographic isometric dollhouse cutaway cafe: parallel verticals and angled axes, two back walls, arched windows on left, espresso counter on right, wooden beams and floor, warm pendant lamps and hanging plants. A broad empty diamond-shaped floor in front, no movable tables, chairs, rugs, cats, or people. Flat cream surrounding background. Warm anime storybook painterly style, no website interface or readable text.
+
+AVATARS
+Built-in image tool: six adult student characters in a transparent 3 by 2 grid, full-body figures seen from an elevated three-quarter angle, holding coffee or notebooks, with varied hair styles, skin tones and cozy clothing. Warm storybook cafe style, no text or cell borders. Saved as assets/avatars.png.

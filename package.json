@@ -1,0 +1,11 @@
+{
+  "name": "cram-and-coffee",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "check": "node --check app.js && node --check server.js",
+    "test": "node test.mjs && node assets.test.mjs && node audio.test.mjs && node plant-care.test.mjs && node clock.test.mjs"
+  }
+}

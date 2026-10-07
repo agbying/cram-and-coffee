@@ -1,0 +1,23 @@
+.timer-cycle{font-size:10px;line-height:1.5;margin:-8px 0 13px;color:#887660}
+.focus-page .timer-cycle{font-size:10px;margin:-6px 0 13px}
+.round[data-playing="true"]{background:#dce8cc!important;color:#48623d}
+.sound-options{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:15px 0 23px}
+.sound-choice{position:relative;display:flex;align-items:center;gap:10px;padding:14px 12px;border:1px solid var(--line);border-radius:12px;cursor:pointer;background:var(--card)}
+.sound-choice:has(input:checked){border-color:#7d936a;background:#f0f3e9;box-shadow:0 0 0 1px #7d936a}
+.sound-choice input{accent-color:var(--green);margin:0;flex-shrink:0}
+.sound-symbol{font-size:22px;color:#6b805a;width:28px;flex-shrink:0;text-align:center}
+.sound-choice b{font-size:12px;font-weight:600}
+.sound-choice small{display:block;font-size:10px;line-height:1.5;margin-top:5px}
+.sound-volume{margin-bottom:18px}
+.sound-volume output{float:right;font-weight:400;color:var(--muted)}
+.sound-volume input[type="range"]{padding:0;width:100%;accent-color:var(--green);margin-top:15px}
+.sound-playback{display:flex;align-items:center;gap:15px;padding-bottom:20px}
+#sound-status{font-size:11px;color:var(--muted)}
+.sound-end{display:flex;gap:12px;align-items:center;border-top:1px solid var(--line);padding-top:18px}
+.sound-end .field{flex:1;margin:0}
+.sound-end button{font-size:11px;align-self:end;margin-bottom:1px;white-space:nowrap}
+.sound-note{font-size:10px;line-height:1.7;margin:20px 0 0}
+dialog:has(.sound-options){width:570px}
+.dark .sound-choice:has(input:checked){background:#46503c}
+@media(max-width:460px){.sound-options{gap:8px}.sound-choice{padding:12px 9px;gap:7px}.sound-symbol{display:none}.sound-playback{gap:10px}.sound-end{gap:8px}}
+
